@@ -1,6 +1,6 @@
-package com.guide.blog.member.controller;
+package com.guide.blog.controller;
 
-import com.guide.blog.member.Member;
+import com.guide.blog.domain.Member;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;

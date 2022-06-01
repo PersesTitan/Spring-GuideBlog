@@ -1,4 +1,4 @@
-package com.guide.blog.member;
+package com.guide.blog.domain;
 
 import lombok.Data;
 
