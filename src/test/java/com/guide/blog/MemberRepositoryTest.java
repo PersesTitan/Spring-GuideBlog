@@ -23,15 +23,6 @@ public class MemberRepositoryTest {
     @Transactional
     @Rollback(value = false)
     void repositoryTest() throws Exception {
-        //given
-        createMember();
-
-        //when
-
-        //then
-    }
-
-    private void createMember() {
         String[] names = {"TESTER1", "TESTER2", "TESTER3"};
         new ArrayList<>(List.of(names))
                 .forEach(view -> {
