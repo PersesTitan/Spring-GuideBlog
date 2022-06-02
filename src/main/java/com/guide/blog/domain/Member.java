@@ -1,12 +1,11 @@
 package com.guide.blog.domain;
 
 import lombok.Data;
-import lombok.NonNull;
-import lombok.RequiredArgsConstructor;
 
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.validation.constraints.NotBlank;
+import java.time.LocalDate;
 import java.util.Date;
 
 /**
@@ -21,17 +20,13 @@ import java.util.Date;
  * email - 이메일 <br>
  */
 @Data
-@RequiredArgsConstructor
+@Entity
 public class Member {
-    @Id
-    @GeneratedValue
+    @Id @GeneratedValue
     private Long id;
-    @NonNull @NotBlank
-    private String name;
-    @NonNull @NotBlank
+    private String userName;
     private String password;
 
-    @NotBlank
-    private Date date;
+    private LocalDate date;
     private String email;
 }
