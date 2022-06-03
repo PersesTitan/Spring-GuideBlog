@@ -1,6 +1,7 @@
 package com.guide.blog.domain;
 
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -18,8 +19,8 @@ import java.time.LocalDate;
  * date - 아이디를 생성한 날짜 <br>
  * email - 이메일 <br>
  */
-@Data
 @Entity
+@Setter @Getter
 public class Member {
     @Id @GeneratedValue
     private Long id;
