@@ -10,13 +10,14 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 
 @Service
-@Transactional
+@Transactional(readOnly = true)
 @RequiredArgsConstructor
 public class MemberService {
 
     //@AutoWire 생략 가능
     private final MemberRepository memberRepository;
 
+    @Transactional
     public Long join(Member member) {
         validateDuplicateMember(member);
         memberRepository.save(member);
