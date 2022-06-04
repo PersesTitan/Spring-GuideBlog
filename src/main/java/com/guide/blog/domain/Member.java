@@ -1,32 +1,34 @@
 package com.guide.blog.domain;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import java.time.LocalDate;
+import javax.persistence.*;
+import javax.validation.constraints.NotNull;
+import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
- * <p>
- * id - 해당 전용 아이디
- * PK 정의, AUTO 정의 <br>
- * </p>
- *
- * name - 아이디 이름 <br>
- * password - 비밀번호 <br>
- * date - 아이디를 생성한 날짜 <br>
- * email - 이메일 <br>
+ * id - 유저 고유 아이디
+ * userName - 유저 고유 이름
+ * password - 유저 비밀번호
+ * date - 계정 생성일
+ * group - 유저 소속
+ * information - 유저 정보
  */
 @Entity
-@Setter @Getter
+@Getter @Setter
 public class Member {
-    @Id @GeneratedValue
-    private Long id;
-    private String userName;
-    private String password;
 
-    private LocalDate date;
+    @Id @GeneratedValue
+    @Column(name = "member_id")
+    private Long id;
+
+    private String nickname;
+    private String loginId;
+    private String password;
     private String email;
 }

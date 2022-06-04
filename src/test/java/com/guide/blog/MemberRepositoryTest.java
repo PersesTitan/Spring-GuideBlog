@@ -10,6 +10,7 @@ import org.springframework.test.annotation.Rollback;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -23,14 +24,15 @@ public class MemberRepositoryTest {
     @Transactional
     @Rollback(value = false)
     void repositoryTest() throws Exception {
+        //데이터 여러개 넣기
         String[] names = {"TESTER1", "TESTER2", "TESTER3"};
         new ArrayList<>(List.of(names))
                 .forEach(view -> {
                     //given
                     Member member = new Member();
-                    member.setUserName(view);
+                    member.setNickname(view);
                     member.setPassword("1234");
-                    member.setDate(LocalDate.now());
+                    member.setLoginId(view);
                     //when
                     Long saveId = memberRepository.save(member);
                     Member findMember = memberRepository.find(saveId);
