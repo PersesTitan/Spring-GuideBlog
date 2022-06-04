@@ -18,7 +18,6 @@ public class MemberRepository {
     /**
      * 저장
      * @param member 정보 가져옴
-     * @return 아이디 반환
      */
     public void save(Member member) {
         em.persist(member);
@@ -46,8 +45,11 @@ public class MemberRepository {
                 .getResultList();
     }
 
-    //중복 체크
-    /*====================*/
+    /**
+     * 중복 체크하는 메소드
+     * @param loginId 로그인 아이디를 받았을때
+     * @return 리스트를 반환함
+     */
 
     public List<Member> findByLoginId(String loginId) {
         return em.createQuery("SELECT M FROM Member AS M WHERE M.loginId = :loginId", Member.class)
