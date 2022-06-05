@@ -29,10 +29,7 @@ public class MemberRepositoryTest {
         new ArrayList<>(List.of(names))
                 .forEach(view -> {
                     //given
-                    Member member = new Member();
-                    member.setNickname(view);
-                    member.setPassword("1234");
-                    member.setLoginId(view);
+                    Member member = new Member(view, view, "1234", null);
                     //when
                     Long saveId = memberRepository.save(member);
                     Member findMember = memberRepository.find(saveId);
