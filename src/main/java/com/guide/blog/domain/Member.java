@@ -1,6 +1,7 @@
 package com.guide.blog.domain;
 
 import lombok.Getter;
+import lombok.Setter;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
@@ -21,24 +22,14 @@ public class Member {
     @Column(name = "member_id")
     private Long id;
 
-    @NotNull private String nickname;
+    @Setter @NotNull
+    private String nickname;
+    @Setter @NotNull
+    private String password;
     @NotNull private String loginId;
-    @NotNull private String password;
     @NotNull private LocalDateTime createDate;
 
-    private String email;
-
-    public void setNickname(String nickname) {
-        this.nickname = nickname;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
+    @Setter private String email;
 
     public Member(String nickname, String loginId, String password, String email) {
         this.nickname = nickname;
