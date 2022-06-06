@@ -25,6 +25,7 @@ public class Member {
     @NotNull private String loginId;
     @NotNull private String password;
     @NotNull private LocalDateTime createDate;
+
     private String email;
 
     public void setNickname(String nickname) {

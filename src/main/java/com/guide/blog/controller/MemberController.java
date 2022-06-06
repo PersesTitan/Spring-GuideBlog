@@ -15,4 +15,7 @@ public class MemberController {
         model.addAttribute("userName", userName);
         return userName;
     }
+
+//    @GetMapping("")
+//    public String login
 }
