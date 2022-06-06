@@ -1,6 +1,8 @@
 package com.guide.blog.repository;
 
 import com.guide.blog.domain.Member;
+import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
@@ -8,10 +10,10 @@ import javax.persistence.PersistenceContext;
 import java.util.List;
 
 @Repository
+@RequiredArgsConstructor
 public class MemberRepository {
 
-    @PersistenceContext
-    private EntityManager em;
+    private final EntityManager em;
 
     /**
      * 저장
@@ -44,10 +46,18 @@ public class MemberRepository {
                 .getResultList();
     }
 
-    public List<Member> findByName(Long id) {
-        return em.createQuery("SELECT M FROM Member AS M WHERE M.id = :id", Member.class)
-                .setParameter("id", id)
+    //중복 체크
+    /*====================*/
+
+    public List<Member> findByLoginId(String loginId) {
+        return em.createQuery("SELECT M FROM Member AS M WHERE M.loginId = :loginId", Member.class)
+                .setParameter("loginId", loginId)
                 .getResultList();
     }
 
+    public List<Member> findByNickName(String nickName) {
+        return em.createQuery("SELECT M FROM Member AS M WHERE M.nickname = :nickName", Member.class)
+                .setParameter("nickName", nickName)
+                .getResultList();
+    }
 }
