@@ -2,7 +2,6 @@ package com.guide.blog.service;
 
 import com.guide.blog.domain.Member;
 import com.guide.blog.repository.MemberRepository;
-import lombok.AllArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
