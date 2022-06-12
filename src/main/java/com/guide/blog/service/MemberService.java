@@ -24,6 +24,7 @@ public class MemberService {
         return member.getId();
     }
 
+    //중복 체크 loginId, nickName 중복 불가
     private void validateDuplicateMember(Member member) {
         String loginId = member.getLoginId();
         String nickname = member.getNickname();
@@ -31,5 +32,13 @@ public class MemberService {
         if (!loginIdList.isEmpty()) throw new IllegalStateException("존재하는 아이디 입니다.");
         List<Member> nickName = memberRepository.findByNickName(nickname);
         if (!nickName.isEmpty()) throw new IllegalStateException("존재하는 닉네임 입니다.");
+    }
+
+    public Member findOne(Long id) {
+        return memberRepository.findOne(id);
+    }
+
+    public List<Member> findMembers() {
+        return memberRepository.findAll();
     }
 }
