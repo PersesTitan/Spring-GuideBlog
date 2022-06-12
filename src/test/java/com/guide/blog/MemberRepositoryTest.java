@@ -12,6 +12,8 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.ArrayList;
 import java.util.List;
 
+import static com.guide.blog.domain.Member.createMember;
+
 @SpringBootTest
 public class MemberRepositoryTest {
 
@@ -28,7 +30,7 @@ public class MemberRepositoryTest {
         new ArrayList<>(List.of(names))
                 .forEach(view -> {
                     //given
-                    Member member = new Member(view, view, password, null);
+                    Member member = createMember(view, view, password, null);
                     //when
                     memberRepository.save(member);
                     Long id = memberRepository.findId(view, password);
