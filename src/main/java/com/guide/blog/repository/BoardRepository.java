@@ -21,6 +21,7 @@ public class BoardRepository {
         }
     }
 
+    //조회 로직
     public Board findOne(Long id) {
         return em.find(Board.class, id);
     }
@@ -28,5 +29,11 @@ public class BoardRepository {
     public List<Board> findAll() {
         return em.createQuery("SELECT b FROM Board b", Board.class)
                 .getResultList();
+    }
+
+    //삭제 로직
+    public void boardDelete(Long id) {
+        em.createQuery("DELETE FROM Board AS b WHERE b.id = :id")
+                .setParameter("id", id);
     }
 }
