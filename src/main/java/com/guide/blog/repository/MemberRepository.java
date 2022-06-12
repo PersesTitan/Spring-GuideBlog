@@ -2,11 +2,9 @@ package com.guide.blog.repository;
 
 import com.guide.blog.domain.Member;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
 import java.util.List;
 
 @Repository
@@ -50,7 +48,6 @@ public class MemberRepository {
      * @param loginId 로그인 아이디를 받았을때
      * @return 리스트를 반환함
      */
-
     public List<Member> findByLoginId(String loginId) {
         return em.createQuery("SELECT M FROM Member AS M WHERE M.loginId = :loginId", Member.class)
                 .setParameter("loginId", loginId)

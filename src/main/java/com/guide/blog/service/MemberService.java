@@ -24,7 +24,8 @@ public class MemberService {
         return member.getId();
     }
 
-    //중복 체크 loginId, nickName 중복 불가
+    //중복 체크
+    //loginId, nickName 중복 불가
     private void validateDuplicateMember(Member member) {
         String loginId = member.getLoginId();
         String nickname = member.getNickname();
