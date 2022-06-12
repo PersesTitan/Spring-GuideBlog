@@ -10,18 +10,19 @@ import java.time.LocalDateTime;
 import static javax.persistence.FetchType.*;
 
 /**
- *
+ * 게시글
  */
-@Entity
-@Getter
+@Entity @Getter
 public class Board {
 
     @Id @GeneratedValue
     @Column(name = "board_id")
     private Long id;
 
-    @NotNull private String title;
-    @NotNull private String content;
+    @NotNull @Setter
+    private String title;
+    @NotNull @Setter
+    private String content;
 
     @ManyToOne(fetch = LAZY)
     @JoinColumn(name = "member_id")
@@ -29,20 +30,18 @@ public class Board {
 
     private LocalDateTime createdDate;
 
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
-    public void setContent(String content) {
-        this.content = content;
-    }
-
-    public Board(String title, String content, Member member) {
-        this.title = title;
-        this.content = content;
+    private Board(Member member, String title, String content) {
         this.member = member;
+        this.title = title;
+        this.content = content;
         this.createdDate = LocalDateTime.now();
     }
 
     protected Board() {}
+
+    //생성 메소드
+    public static Board createBoard(Member member, String title, String content) {
+        return new Board(member, title, content);
+    }
+
 }
