@@ -1,24 +1,32 @@
 package com.guide.blog.repository;
 
 import com.guide.blog.domain.Board;
-import com.guide.blog.domain.Member;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
+import java.util.List;
 
 @Repository
+@RequiredArgsConstructor
 public class BoardRepository {
 
-    @PersistenceContext
-    private EntityManager em;
+    private final EntityManager em;
 
-    public Long save(Board board) {
-        em.persist(board);
-        return board.getId();
+    public void save(Board board) {
+        if (board.getId() == null) {
+            em.persist(board);
+        } else {
+            em.merge(board);
+        }
     }
 
-    public Board find(Long id) {
+    public Board findOne(Long id) {
         return em.find(Board.class, id);
+    }
+
+    public List<Board> findAll() {
+        return em.createQuery("SELECT b FROM Board b", Board.class)
+                .getResultList();
     }
 }
