@@ -6,6 +6,8 @@ import lombok.Setter;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * id - 유저 고유 아이디 <br>
@@ -26,12 +28,15 @@ public class Member {
     private String nickname;
     @Setter @NotNull
     private String password;
-    @NotNull private String loginId;
-    @NotNull private LocalDateTime createDate;
+    @NotNull
+    private String loginId;
+    @NotNull
+    private LocalDateTime createDate;
 
-    @Setter private String email;
+    @Setter
+    private String email;
 
-    public Member(String nickname, String loginId, String password, String email) {
+    private Member(String nickname, String loginId, String password, String email) {
         this.nickname = nickname;
         this.loginId = loginId;
         this.password = password;
@@ -40,4 +45,11 @@ public class Member {
     }
 
     protected Member() {}
+
+    //생성 로직
+    public static Member createMember(String nickname, String loginId, String password, String email) {
+        return new Member(nickname, loginId, password, email);
+    }
+
+
 }
