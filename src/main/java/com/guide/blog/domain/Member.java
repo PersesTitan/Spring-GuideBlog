@@ -1,6 +1,8 @@
 package com.guide.blog.domain;
 
+import lombok.AccessLevel;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
@@ -18,6 +20,7 @@ import java.util.List;
  * information - 유저 정보
  */
 @Entity @Getter
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class Member {
 
     @Id @GeneratedValue
@@ -44,12 +47,8 @@ public class Member {
         this.createDate = LocalDateTime.now();
     }
 
-    protected Member() {}
-
     //생성 로직
     public static Member createMember(String nickname, String loginId, String password, String email) {
         return new Member(nickname, loginId, password, email);
     }
-
-
 }
