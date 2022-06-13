@@ -24,7 +24,7 @@ public class MemberServiceTest {
     @Test
     public void 회원가입() {
         //given
-        Member member = new Member("A", "a", "1234", null);
+        Member member = Member.createMember("A", "a", "1234", null);
 
         //when
         Long id = memberService.join(member);
@@ -36,9 +36,9 @@ public class MemberServiceTest {
     @Test
     public void 중복_예외_처리() {
         //given
-        Member member1 = new Member("A", "b", "1234", null);
-        Member member2 = new Member("A", "a", "1234", null);
-        Member member3 = new Member("B", "b", "1234", null);
+        Member member1 = Member.createMember("A", "b", "1234", null);
+        Member member2 = Member.createMember("A", "a", "1234", null);
+        Member member3 = Member.createMember("B", "b", "1234", null);
 
         //when
         memberService.join(member1);
