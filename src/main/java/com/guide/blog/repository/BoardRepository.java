@@ -32,8 +32,7 @@ public class BoardRepository {
     }
 
     //삭제 로직
-    public void boardDelete(Long id) {
-        em.createQuery("DELETE FROM Board AS b WHERE b.id = :id")
-                .setParameter("id", id);
+    public void deleteBoard(Board board) {
+        em.remove(board);
     }
 }
