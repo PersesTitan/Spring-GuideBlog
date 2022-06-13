@@ -1,6 +1,8 @@
 package com.guide.blog.domain;
 
+import lombok.AccessLevel;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
@@ -13,6 +15,7 @@ import static javax.persistence.FetchType.*;
  * 게시글
  */
 @Entity @Getter
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class Board {
 
     @Id @GeneratedValue
@@ -37,11 +40,8 @@ public class Board {
         this.createdDate = LocalDateTime.now();
     }
 
-    protected Board() {}
-
     //생성 메소드
     public static Board createBoard(Member member, String title, String content) {
         return new Board(member, title, content);
     }
-
 }
